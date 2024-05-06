@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import userRoutes from './routes/user.routes.js';
 
 dotenv.config()
 const app=express();
@@ -14,3 +15,5 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error)=>{
         console.log(error);
     })
+// test api
+app.use('/api/user',userRoutes)
