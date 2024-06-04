@@ -47,7 +47,7 @@ export const signin=async(req,res,next)=>{
     const token=jwt.sign({id:validUser._id},process.env.JWT_SECRET);
     // separate the password from the rest of the respose
     const {password :pass,...rest}=validUser._doc
-     res.status(200).cookie('Access_Token',token,{
+     res.status(200).cookie('access_token',token,{
         httpOnly:true
      }).json(rest)
     try {
@@ -65,7 +65,7 @@ export const google=async(req,res,next)=>{
         if(user){
             const token=jwt.sign({id:user._id},process.env.JWT_SECRET);
             const {password,...rest}=user._doc;
-            res.status(200).cookie('Access_Token',token,{
+            res.status(200).cookie('access_token',token,{
                 httpOnly:true
              }).json(rest)
         }
@@ -83,7 +83,7 @@ export const google=async(req,res,next)=>{
             const {password,...rest}=newUser._doc;
             res
                 .status(200)
-                .cookie('Access_Token',token,{
+                .cookie('access_token',token,{
                     httpOnly:true
                 }).json(rest)
         }
