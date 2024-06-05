@@ -25,20 +25,21 @@ export const updateUser=async(req,res,next)=>{
         if(req.body.userName !== req.body.userName.toLowerCase()){
             return next(errorHandler(400,"userName must be lowercase"))
         }
+    }
         try {
             const updatedUser=await User.findByIdAndUpdate(req.params.userId,{
                 $set:{
-                    userName:req.params.userName,
-                    email:req.params.email,
-                    profilePicture:req.params.profilePicture,
+                    userName:req.body.userName,
+                    email:req.body.email,
+                    profilePicture:req.body.profilePicture,
                     password:req.body.password
                 }
             },
             {new:true});
             const {password,...rest}=updatedUser._doc;
             res.status(200).json(rest);
-        } catch (error) {
+        }
+        catch (error) {
             next(error)
         }
     }
-}
