@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error)=>{
         console.log(error);
     })
+console.log("hello");
 // test api
 app.use('/api/user',userRoutes)
 app.use('/api/auth',authRoutes)
