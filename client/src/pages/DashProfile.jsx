@@ -99,7 +99,7 @@ export default function Dashboard()
             }
         } catch (error) {
             dispatch(updateFailure(error.message));
-            setUpdateUserError(data.message)
+            setUpdateUserError(error.message)
         }
     };
 
