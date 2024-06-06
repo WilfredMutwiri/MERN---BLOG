@@ -7,8 +7,8 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { updateStart,updateSuccess,updateFailure } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
-export default function 
-() {
+export default function Dashboard()
+{
     const {currentUser}=useSelector(state=>state.user);
     const [imageFile,setImageFile]=useState(null);
     const [imageFileUrl,setImageFileUrl]=useState(null);

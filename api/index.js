@@ -4,9 +4,10 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.route.js'
 import cookieParser from 'cookie-parser';
-
+import cors from 'cors'
 dotenv.config()
 const app=express();
+app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 app.listen(process.env.PORT,()=>{
@@ -19,7 +20,6 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error)=>{
         console.log(error);
     })
-console.log("hello");
 // test api
 app.use('/api/user',userRoutes)
 app.use('/api/auth',authRoutes)
