@@ -2,6 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react'
 import React, { useState } from 'react'
 import { Link,useNavigate} from 'react-router-dom'
 import OAuth from '../components/OAuth';
+import { SERVER_URL } from '../constants/ServerURL';
 
 export default function SignUp() {
   const [formdata,setFormData]=useState({});
@@ -20,7 +21,7 @@ export default function SignUp() {
     try {
       setErrorMessage(null)
       setIsLoading(true)
-      const res=await fetch('/api/auth/signup',{
+      const res=await fetch(SERVER_URL+'/api/auth/signup',{
         method:"POST",
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(formdata)
@@ -31,7 +32,7 @@ export default function SignUp() {
       }
       setIsLoading(false)
       if(res.ok){
-        Navigate('/sign-in')
+        Navigate('/signIn')
       }
     } catch (error) {
       setErrorMessage(error.message)
