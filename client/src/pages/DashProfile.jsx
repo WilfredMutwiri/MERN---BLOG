@@ -7,6 +7,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { updateStart,updateSuccess,updateFailure } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
+import { SERVER_URL } from '../constants/ServerURL';
 export default function Dashboard()
 {
     const {currentUser}=useSelector(state=>state.user);
@@ -80,7 +81,7 @@ export default function Dashboard()
         }
         try {
             dispatch(updateStart());
-            const res=await fetch(`/api/user/update/${currentUser._id}`,{
+            const res=await fetch(SERVER_URL+`/api/user/update/${currentUser._id}`,{
                 method:'PUT',
                 headers:{
                     'Content-Type':'application/json'
